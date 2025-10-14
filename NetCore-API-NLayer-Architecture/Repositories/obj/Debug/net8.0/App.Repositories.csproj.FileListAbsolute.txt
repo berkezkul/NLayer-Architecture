@@ -1,0 +1,15 @@
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\bin\Debug\net8.0\App.Repositories.deps.json
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\bin\Debug\net8.0\App.Repositories.dll
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\bin\Debug\net8.0\App.Repositories.pdb
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.csproj.AssemblyReference.cache
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.GeneratedMSBuildEditorConfig.editorconfig
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.AssemblyInfoInputs.cache
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.AssemblyInfo.cs
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.csproj.CoreCompileInputs.cache
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.sourcelink.json
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.dll
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\refint\App.Repositories.dll
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.pdb
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\ref\App.Repositories.dll
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\bin\Debug\net8.0\App.Repositories.runtimeconfig.json
+D:\Projelerim\NLayer-Architecture\NetCore-API-NLayer-Architecture\Repositories\obj\Debug\net8.0\App.Repositories.genruntimeconfig.cache
