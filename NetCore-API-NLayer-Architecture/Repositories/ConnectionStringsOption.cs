@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace App.Repositories
 {
-    public class ConnectionStringOption
+    public class ConnectionStringsOption
     {
         public const string Key = "ConnectionStrings";
         public string SqlServer { get; set; } = default!;
