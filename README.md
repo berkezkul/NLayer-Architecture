@@ -10,6 +10,7 @@ Production‑oriented .NET 8 Web API structured with a clean N‑Layer architect
 - **Configuration**
 - **Migrations & Database**
 - **Run**
+- **Real‑time & Messaging (SignalR / WebSocket / RabbitMQ)**
 - **Useful Commands**
 ---
 
@@ -106,9 +107,56 @@ cd NetCore-API-NLayer-Architecture/App.API
 dotnet run
 ```
 - Swagger UI: `https://localhost:<port>/swagger`
-- Sample endpoint: `Categories`
+- Sample endpoint: `Notifications` (POST `/Notifications/broadcast`)
 
 Extend with your own services and controllers (e.g., Products CRUD) as needed.
+
+---
+
+### Real‑time & Messaging (SignalR / WebSocket / RabbitMQ)
+
+This solution includes real‑time updates to clients via SignalR (built on WebSockets) and optional asynchronous messaging via RabbitMQ (MassTransit).
+
+- Why SignalR?
+  - Bi‑directional, low‑latency updates over WebSockets with automatic fallback and reconnection handling.
+  - Simplifies broadcasting to all clients or groups without managing raw socket plumbing.
+  - Impact: Users see immediate UI updates (e.g., new records, progress, notifications) without polling.
+
+- Why RabbitMQ (MassTransit)?
+  - Decoupled, reliable, and scalable background processing via message queues.
+  - Enables eventual consistency and resilience for long‑running or high‑throughput workflows.
+  - Impact: Protects API responsiveness; work can be retried and scaled horizontally.
+
+Included server components:
+- Hub: `/hubs/notifications` (see `App.API/Hubs/NotificationsHub.cs`).
+- Broadcast API: `POST /Notifications/broadcast` sends a `broadcast` message to all connected clients.
+- MassTransit configuration with RabbitMQ host in `appsettings.Development.json` (`RabbitMQ` section).
+
+Quick test (client):
+```javascript
+// npm i @microsoft/signalr
+import { HubConnectionBuilder } from '@microsoft/signalr';
+
+const connection = new HubConnectionBuilder()
+  .withUrl('https://localhost:<port>/hubs/notifications')
+  .build();
+
+connection.on('broadcast', data => console.log('broadcast:', data));
+await connection.start();
+```
+
+Then call from Swagger:
+```json
+POST /Notifications/broadcast
+{ "message": "Hello from server" }
+```
+
+RabbitMQ (optional):
+```bash
+docker run -d --name rabbitmq -p 5672:5672 -p 15672:15672 rabbitmq:3-management
+# UI: http://localhost:15672 (guest/guest)
+```
+MassTransit is registered in `Program.cs`. Add consumers in a worker or API project as needed.
 
 ---
 
