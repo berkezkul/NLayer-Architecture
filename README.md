@@ -126,4 +126,3 @@ dotnet ef --help
 
 ---
 
-Thanks for your feedback and contributions!
