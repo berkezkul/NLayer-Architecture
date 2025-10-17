@@ -1,12 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using App.Repositories.Categories;
+using App.Repositories.Interceptors;
+using App.Repositories.Products;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace App.Repositories.Extensions
 {
@@ -16,17 +13,22 @@ namespace App.Repositories.Extensions
         {
             services.AddDbContext<AppDbContext>(options =>
             {
-                var connectionStrings = configuration.GetSection(ConnectionStringsOption.Key).
-                Get<ConnectionStringsOption>();
+                var connectionStrings =
+                    configuration.GetSection(ConnectionStringOption.Key).Get<ConnectionStringOption>();
 
-                options.UseSqlServer(connectionStrings!.SqlServer, 
+                options.UseSqlServer(connectionStrings!.SqlServer,
                     sqlServerOptionsAction =>
                     {
-                        sqlServerOptionsAction.MigrationsAssembly(
-                            typeof(RepositoryAssembly).Assembly.FullName);
+                        sqlServerOptionsAction.MigrationsAssembly(typeof(RepositoryAssembly).Assembly.FullName);
                     });
-            });
 
+                options.AddInterceptors(new AuditDbContextInterceptor());
+            });
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ICategoryRepository, CategoryRepository>();
+            services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             return services;
         }
     }

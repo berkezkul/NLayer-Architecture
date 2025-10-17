@@ -1,0 +1,20 @@
+# Visual Studio / .NET build artifacts
+.vs/
+**/bin/
+**/obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# OS/editor junk
+.DS_Store
+Thumbs.db
+
+# Rider/VS Code (optional)
+.idea/
+.vscode/
+
+
